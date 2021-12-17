@@ -11,7 +11,6 @@ import {
   Route,
   RouteResponse
 } from '../models/route.model';
-
 import { RouteFolder } from '../models/routeFolder.model';
 
 export const EnvironmentDefault: Environment = {
@@ -195,7 +194,6 @@ const RouteResponseSchema = Joi.object<RouteResponse, true>({
     .required()
 });
 
-
 export const RouteSchema = Joi.object<Route, true>({
   uuid: UUIDSchema,
   parentFolder: Joi.string()
@@ -236,8 +234,7 @@ export const RouteFolderSchema = Joi.object<RouteFolder, true>({
   routes: Joi.array()
     .items(RouteSchema, Joi.any().strip())
     .failover(RouteFolderDefault.routes),
-  isOpen: Joi.bool()
-    .failover(RouteFolderDefault.isOpen)
+  isOpen: Joi.bool().failover(RouteFolderDefault.isOpen)
 });
 
 export const EnvironmentSchema = Joi.object<Environment, true>({
