@@ -12,7 +12,7 @@ import {
   RouteResponse
 } from '../models/route.model';
 
-import { RouteFolder } from '../models/routeFolder.model'
+import { RouteFolder } from '../models/routeFolder.model';
 
 export const EnvironmentDefault: Environment = {
   get uuid() {
@@ -65,8 +65,7 @@ export const RouteFolderDefault: RouteFolder = {
   routes: [],
   documentation: '',
   isOpen: true
-
-}
+};
 
 export const RouteResponseDefault: RouteResponse = {
   get uuid() {
@@ -199,6 +198,10 @@ const RouteResponseSchema = Joi.object<RouteResponse, true>({
 
 export const RouteSchema = Joi.object<Route, true>({
   uuid: UUIDSchema,
+  parentFolder: Joi.string()
+    .allow('')
+    .allow(null)
+    .default(RouteDefault.parentFolder), // default is undefined
   documentation: Joi.string()
     .allow('')
     .failover(RouteDefault.documentation)

@@ -35,6 +35,7 @@ export type ResponseRuleTargets =
 export type Route = {
   uuid: string;
   documentation: string;
+  parentFolder?: string;
   method: Method;
   endpoint: string;
   responses: RouteResponse[];
