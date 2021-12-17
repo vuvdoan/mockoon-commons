@@ -198,8 +198,7 @@ export const RouteSchema = Joi.object<Route, true>({
   uuid: UUIDSchema,
   parentFolder: Joi.string()
     .allow('')
-    .allow(null)
-    .default(RouteDefault.parentFolder), // default is undefined
+    .allow(null),
   documentation: Joi.string()
     .allow('')
     .failover(RouteDefault.documentation)
