@@ -196,9 +196,7 @@ const RouteResponseSchema = Joi.object<RouteResponse, true>({
 
 export const RouteSchema = Joi.object<Route, true>({
   uuid: UUIDSchema,
-  parentFolder: Joi.string()
-    .allow('')
-    .allow(null),
+  parentFolder: Joi.string().allow('').allow(null),
   documentation: Joi.string()
     .allow('')
     .failover(RouteDefault.documentation)
